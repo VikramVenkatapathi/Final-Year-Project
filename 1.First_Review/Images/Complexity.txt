@@ -1,0 +1,12 @@
+Bagging :-
+	Decision tree - 
+
+Adaboost :-
+	Decision tree - 
+
+Stacking :-
+	Decision tree 	  -
+	Random forest	  -
+	XGboost		  -
+	Kneighbours		  -
+	Logistic regression -
