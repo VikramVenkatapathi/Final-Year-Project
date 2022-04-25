@@ -1,0 +1,322 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{ssn-be-cse-review}
+\usepackage{float}
+\usepackage{url}
+\usepackage{alltt}
+\usepackage{longtable}
+\usepackage{graphics}
+%\usepackage{mathtools}
+\usepackage{algorithm2e}[1]
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{trees}
+\newcommand{\comment}[1]{}
+
+
+\begin{document}
+   
+\ptitle{Water Quality Prediction using Statistical, Ensemble and Hybrid models}
+\review{1}
+\setnauthors{3}
+\setauthorone{Vyshali S}{185001202}
+\setauthortwo{Vikram V}{185001194}
+\setauthorthree{Shriya B}{185001149}
+\semester{8}
+\guide{Dr. D.Venkata Vara Prasad}
+\reviewdate{31 March 2022}
+
+\reviewtitle
+\hrule
+
+\section{Title}
+Water Quality Prediction using Statistical, Ensemble and Hybrid methods.
+
+\section{Abstract}
+
+     With a growing population, availability of good quality water is of grave importance. Water gets contaminated through several sources. Thus, the quality of water must be maintained so as to not risk human life. 
+     
+     The objective of this research is to analyse the data and predict the water quality of the resources by building a model with better prediction ability. The proposed Hybrid system will use a combination of statistical and Ensemble learning models. The statistical model pre-processes the data set in order to resolve the shortcomings of real world data. Statistical techniques such as Linear Regression, Classification, and Unsupervised Learning  Algorithms [PCA(Principal modelling techniques), Hierarchical clustering ] are studied and the best Statistical model is taken after comparison with other models. Then, the Ensemble Learning model predicts the quality of the water sample.
+     
+     Ensemble methods create multiple models and combine them to produce better results.They usually produce solutions that are higher in accuracy than a single model. Bagging, Boosting and Stacking are the methods used in this research. These methods are implemented using decision tree classifier, random forest, XGboost, K neighbours and logistic regression as base models. Bagging is generally used to reduce variance in a data set that contains noise. Boosting is a technique that creates a strong classifier from several weak classifiers. Stacking is a method that combines predictions of multiple models to create an optimal model. All three methods are fed with both binary and multi class data. 
+     
+     Finally, Bagging, Boosting and Stacking models are compared and the best model is selected to use for further stages.
+     The statistical and ensemble learning models are combined to form a hybrid model. The outcome of the hybrid model is compared with ensemble learning and statistics based systems in order to analyse the performance of the hybrid model.
+
+%-------------------------------------------------------------------------------
+
+\section{Architectural Design for Proposed system}
+\begin{figure}[H]
+        \centering\includegraphics[width=6in, height=6in, scale=0.45] {architecture.jpeg}         
+        \caption{Proposed system Architecture}
+        \label{fig:rf}
+\end{figure}
+
+The data-sets - both binary class and multi class are fed into the ensemble models. The ensemble models taken for research are bagging, boosting and stacking. The base models such as decision trees, random forest, XGBoost, K neighbours and Logistic regression. 
+\begin{itemize}
+    \item \textbf{Decision trees} are found to \textbf{work best for Bagging Ensemble Model} with better accuracy than others. \item In \textbf{boosting}, both Ada-boost and XGBoost were modelled and \textbf{Ada-boost} was found to be the \textbf{better model} among the two. 
+    \item In \textbf{stacking}, decision tree classifier, random forest, XGboost, K neighbours are used as base models along with linear regression as the final estimator.
+    \item For \textbf{Binary class data}, comparing accuracy, precision, recall, F1 score, cross validation scores and training time, it was found that \textbf{Ada-boost works best} among all three models.
+    \item For \textbf{Multi class data}, comparing the above mentioned scores as well as training time, \textbf{Bagging works best} among the 3 models.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+
+\section{Algorithms / Techniques used with complexity}
+\begin{figure}[H]
+        \centering\includegraphics[width=7in, height=4in, scale=0.45] {Complexity_of_algos.png}         
+        \caption{Base models}
+        \label{fig:rf}
+\end{figure}
+\subsection{Base models}
+\subsubsection{Decision tree}
+A decision tree is a decision support tool that uses a tree-like model of \textbf{decisions and their possible consequences}, including chance event outcomes, resource costs, and utility.
+Their internal nodes represent the features of a data set, branches represent the decision rules and each leaf node represents the outcome.
+\subsubsection{Random Forest}
+Random forest is an ensemble method that is made up of a large number of \textbf{small decision trees}, called \textbf{estimators}, which each produce their own predictions. The random forest model combines the predictions of the estimators to produce a more accurate prediction.
+\subsubsection{XGBoost}
+XGBoost, which stands for \textbf{Extreme Gradient Boosting}, is a scalable, distributed gradient-boosted decision tree (GBDT) machine learning library. It provides \textbf{parallel tree boosting} and is designed to be highly efficient, flexible and portable.It implements Machine Learning algorithms under the Gradient Boosting framework.
+
+
+\subsubsection{K-neighbours}
+The k-nearest neighbors (KNN) algorithm is a data classification method for estimating the \textbf{likelihood} that a data point will become a \textbf{member of one group} or another \textbf{based on} what group the data points \textbf{nearest} to it belong to.It is a \textbf{lazy learning} and \textbf{non-parametric algorithm}.
+\subsubsection{Logistic regression}
+Logistic regression is used to \textbf{predict a dependent categorical target variable}.The nature of target or dependent variable is dichotomous, which means there would be only two possible classes.
+\begin{figure}[H]
+       \fbox{ \centering\includegraphics[width=6in, height=2in, scale=0.45] {model_training.jpeg}}         
+        \caption{Base Models Accuracy}
+        \label{fig:rf}
+\end{figure}
+
+
+\subsection{Ensemble Techniques}
+\subsubsection{Bagging}
+In parallel methods we fit the different considered learners independently from each other and, so, it is possible to train them concurrently. The most famous such approach is “bagging” (standing for “bootstrap aggregating”) that aims at producing an ensemble model that is more robust than the individual models composing it.
+\begin{figure}[H]
+        \centering\includegraphics[width=5in, height=3in, scale=0.45] {4.1 Bagging.jpg}         
+        \caption{Bagging}
+        \label{fig:rf}
+\end{figure}
+
+\subsubsection{Boosting}
+In sequential methods the different combined weak models are no longer fitted independently from each other. The idea is to fit models iteratively such that the training of models at a given step depends on the models fitted at the previous steps. “Boosting” is the most famous of these approaches and it produces an ensemble model that is in general less biased than the weak learners that compose it.
+\begin{figure}[H]
+        \centering\includegraphics[width=5in, height=3in, scale=0.45] {4.2 Boosting.jpg}         
+        \caption{Boosting}
+        \label{fig:rf}
+\end{figure}
+
+\subsubsection{Stacking}
+The idea of stacking is to learn several different weak learners and combine them by training a meta-model to output predictions based on the multiple predictions returned by these weak models. So, we need to define two things in order to build our stacking model: the L learners we want to fit and the meta-model that combines them.
+\begin{figure}[H]
+        \centering\includegraphics[width=5in, height=3in, scale=0.45] {4.3 Stacking.jpg}         
+        \caption{Stacking}
+        \label{fig:rf}
+\end{figure}
+
+%-------------------------------------------------------------------------------
+
+\section{Results}
+\subsection{Exploratory Data Analysis}
+
+\newline
+
+Classification of the records : 
+\begin{itemize}
+
+    \item Binary - Classes 0 \& 1
+    \item Multi - Classes 0, 1 \& 2
+\end{itemize}
+Both the binary and multi class datasets contain no outliers, null values and noise.
+
+    \subsubsection{Binary Class Data}
+    \begin{figure}[H]
+        \centering\includegraphics[width=5in, height=3in, scale=0.45] {binaryclass.jpeg}         
+        \caption{Class Division}
+        \label{fig:rf}
+    \end{figure}
+    \comment{
+    \begin{figure}[H]
+        \centering\includegraphics[width=6.5in, height=3in, scale=0.45] {binary-describe.jpeg}         
+        \caption{Dataset Columns Description}
+        \label{fig:rf}
+    \end{figure}
+    }
+    \begin{figure}[H]
+        \centering\includegraphics[width=5in, height=5in, scale=0.45] {Boxplot_binaryclass.jpeg}         
+        \caption{Boxplot of Binary class data}
+        \label{fig:rf}
+    \end{figure}
+    \comment{
+        \begin{figure}[H]
+        \centering\includegraphics[width=5in, height=2in, scale=0.45] {binary-nitrate-chlorine.png}         
+        \label{fig:rf}
+        \end{figure}
+        \begin{figure}[H]
+        \centering\includegraphics[width=3in, height=2in, scale=0.45] {binary-sodium.jpeg}         
+        \label{fig:rf}
+        \end{figure}
+        \begin{figure}[H]
+        \centering\includegraphics[width=4in, height=2in, scale=0.45] {binary-cod.jpeg}         
+        \label{fig:rf}
+        \end{figure}
+    }
+%------------------------------------------------------------------------------- 
+    \subsubsection{Multi Class Data}
+    \begin{figure}[H]
+        \centering\includegraphics[width=5in, height=2.7in, scale=0.45] {multiclass.jpeg}         
+        \caption{Class Division}
+        \label{fig:rf}
+    \end{figure} 
+    
+    \comment{
+    \begin{figure}[H]
+    \centering\includegraphics[width=6.5in, height=3in, scale=0.45] {multi-describe.jpeg}         
+    \caption{Dataset Columns Description}
+    \label{fig:rf}
+    \end{figure}
+    }
+    
+    \comment{
+        \begin{figure}[H]
+        \centering\includegraphics[width=5in, height=2in, scale=0.45] {multi-nitrate-chlorine.png}         
+        \label{fig:rf}
+        \end{figure}
+        \begin{figure}[H]
+        \centering\includegraphics[width=3in, height=2in, scale=0.45] {multi-sodium.jpeg}         
+        \label{fig:rf}
+        \end{figure}
+        \begin{figure}[H]
+        \centering\includegraphics[width=4in, height=2in, scale=0.45] {multi-cod.jpeg}         
+        \label{fig:rf}
+        \end{figure}
+    }
+    
+    \begin{figure}[H]
+        \centering\includegraphics[width=5in, height=5in, scale=0.45] {Boxplot_multiclass.jpeg}         
+        \caption{Boxplot of Multi class data}
+        \label{fig:rf}
+    \end{figure}
+    %\textbf{Both the box-plots clearly indicates that there are no outliers}
+%-------------------------------------------------------------------------------    
+\subsection{Model Training}
+\begin{itemize}
+    \item Three Ensemble models were trained  - Bagging, Boosting and Stacking.
+    \item The Bagging Classifier was tried with different base models such as  decision tree classifier, random forest, XGBoost, K neighbours and logistic regression. Bagging Model showed the highest accuracy when Decision Tree Classifier was used as its base model.
+    \item Adaboost Classifier is a boosting method where Decision tree classification is used as the base model.
+    \item Stacking Classifier is an ensemble method which uses decision tree classifier, random forest, XGBoost, K neighbours as its estimators and uses Logistic Regression model as its final estimator.
+    \item The accuracy, precision, recall, F1 score and cross validation score have been calculated for each ensemble model.
+    \item The time taken for training each model has also been estimated.
+    \item The accuracy score of each base model has been calculated and compared with the ensemble models. It has been found that \textbf{ensemble models}, which are a combination of the base models, \textbf{have a higher accuracy than the base models} on their own.
+\end{itemize}
+ 
+.   
+
+
+%-------------------------------------------------------------------------------
+
+\subsection{Outcomes}
+\subsubsection{Binary Class data}
+\begin{itemize}
+    \item For Bagging, an accuracy of 99.8\% was achieved using Binary data. 
+    \item  In the case of Adaboost, an accuracy of 100\% was achieved and Stacking achieved an accuracy of 99.8\%. While checking the precision, Bagging achieved 100\% , Adaboost achieved the same precision as boosting and Stacking achieved 99.8\%.
+    \item The recall observed for Bagging was 99.2\%. In case of Adaboost the recall observed was 100\% and the Recall observed in stacking was 99.6\%. 
+    \item The F1 Score achieved in Bagging was 99.6\%, in boosting was 100\%,  and in stacking was 99.6\%.
+    \item Further on, the Cross validation observed was 99.9\% for bagging, 99.9\% for boosting and 99.94\% for stacking.
+    \item The model training time was 0.941, 0.052 and 3.159 seconds respectively for Bagging, Boosting and Stacking.
+\end{itemize}
+    
+ \begin{figure}[H]
+       \fbox{ \centering\includegraphics[width=6in, height=2in, scale=0.45] {binary_class_data.jpeg}}         
+        \caption{Binary class data outcome}
+        \label{fig:rf}
+\end{figure}
+
+\begin{figure}[H]
+       \centering\includegraphics[width=5in, height=4in, scale=0.45] {Confusion_matrix.jpeg}         
+        \caption{Confusion matrix for test Binary data - Bagging using Decision tree, Adaboost, Stacking}
+        \label{fig:rf}
+\end{figure}
+\begin{figure}[H]
+       \centering\includegraphics[width=5in, height=3in, scale=0.45] {ROC_curve.jpeg}         
+        \caption{ROC curve for test Binary data - Bagging using Decision tree, Adaboost, Stacking}
+        \label{fig:rf}
+\end{figure}
+\begin{figure}[H]
+        \centering\includegraphics[width=5in, height=3in, scale=0.45] {Precision_Recall.jpeg}         
+        \caption{Precision-Recall display for test Binary data - Bagging using Decision tree, Adaboost, Stacking}
+        \label{fig:rf}
+\end{figure}
+
+%-------------------------------------------------------------------------------
+
+\subsubsection{Multi Class data}
+\begin{itemize}
+    \item For Bagging, Boosting and Stacking, an accuracy of 100\% was achieved using Multi class data. 
+    \item While checking the precision, Bagging, Boosting and Stacking achieved 100\% again.
+    \item Similarly,The recall observed for Bagging, Boosting and Stacking was 100\%. 
+    \item The F1 Score achieved in Bagging, Boosting and Stacking was 100\% too.
+    \item Cross validation observed was 100\% for bagging and stacking, while the  Cross validation observed was 99.98\% for stacking.
+    \item The model training time was 0.752, 0.093 and 8.813 seconds respectively for Bagging, Boosting and Stacking.
+\end{itemize}
+   
+\begin{figure}[H]
+       \fbox{\centering\includegraphics[width=6in, height=2in, scale=0.45] {multi_class_data.jpeg}}         
+        \caption{Multi class data outcome}
+        \label{fig:rf}
+\end{figure}
+**Model taining time is mentioned in seconds
+
+\begin{figure}[H]
+       \fbox{\centering\includegraphics[width=5in, height=3in, scale=0.45] {confusion-matrix-multi.jpeg}}         
+        \caption{Confusion matrix for test Multi class data - Bagging using Decision tree, Ad-
+aboost, Stacking}
+        \label{fig:rf}
+\end{figure}
+\begin{figure}[H]
+       \fbox{\centering\includegraphics[width=6in, height=2in, scale=0.45] {roc-class012.png}}         
+        \caption{ROC for test Multi class data - Bagging using Decision tree, Ad-
+aboost, Stacking}
+        \label{fig:rf}
+\end{figure}
+
+\begin{figure}[H]
+       \fbox{\centering\includegraphics[width=5in, height=2in, scale=0.45] {Accuracy_curve.jpeg}}         
+        \caption{Accuracy curve}
+        \label{fig:rf}
+\end{figure}
+%-------------------------------------------------------------------------------
+
+\begin{thebibliography}{99}
+  \bibliographystyle{plain}
+  
+    \bibitem[1]{Ahmad} Ahmad, Z.; Rahim, N. A.; Bahadori, Alireza; Zhang, Jie (2017). Improving water quality index prediction in Perak River basin Malaysia through a combination of multiple neural networks. \emph{International Journal of River Basin Management}, 15(1), 79–87. DOI:10.1080/15715124.2016.1256297 .
+    
+    \bibitem[2]{Muharemi} Fitore Muharemi, Doina Logofătu , Florin Leon (2019): Machine learning approaches for anomaly detection of water quality on a real-world data set, \emph{Journal of Information and Telecommunication}, 1–14, DOI: 10.1080/24751839.2019.1565653 .
+    
+    \bibitem[3]{Barzegar} Barzegar, R., Aalami, M.T., Adamowski, J., 2020. Short-term water quality variable prediction using a hybrid CNN-LSTM deep learning model.\emph{Stoch.
+    Environ. Res.Risk Asses.34,415-433.}                        DOI : https://doi.org/10.1007/s0047-020-01776-2
+    
+    \bibitem[4]{Dvv} D. Venkata Vara Prasad , Lokeswari Y. Venkataramanaa , P. Senthil Kumarb, G. Prasannamedhab, K. Soumyaa, A.J. Poornemaa. 2021. Prediction on water quality of a lake in Chennai, India using machine learning algorithms. 218, 44-51. DOI: 10.5004/dwt.2021.26970.
+    
+    \bibitem[5] {Khan} Khan, Y., See, C.S., 2016. Predicting and analyzing water quality using Machine Learning: A comprehensive model. In: 2016 \emph{IEEE Long Island Systems, Applications and Technology Conference (LISAT)} pp(1-6). DOI:10.1109/LISAT.2016.7494106
+    
+    \bibitem[6] {Solanki} Solanki, Archana, Agrawal, Himanshu, Khare, Kanchan, 2015.Predictive Analysis of Water Quality Parameters using Deep Learning. \emph{International Journal of Computer Applications} (0975 – 8887) Volume 125 – No.9, 29-34.
+    
+    \bibitem[7] {Muangthong} Muangthong, Somphinith; Shrestha, Sangam (2015). Assessment of surface water quality using multivariate statistical techniques: case study of the Nampong River and Songkhram River, Thailand. Environmental Monitoring and Assessment, Environ Monit Assess (2015) 187:548. DOI:10.1007/s10661-015-4774-1 
+    
+    \bibitem[8] {Pejman}  Ahmed Barakata, Mohamed El Baghdadi, Jamila Rais, Brahim Aghezzaf, Mohamed Slassi, 2016. Assessment of spatial and seasonal water quality variation of Oum Er Rbia River (Morocco) using multivariate statistical techniques. \emph{International Soil and Water Conservation} Research Volume 4, Issue 4, December 2016, Pages 284-292. https://doi.org/10.1016/j.iswcr.2016.11.002
+    
+    \bibitem[9] {Rahman} A. Rahman, Statistics-Based Data Preprocessing Methods and Machine Learning Algorithms for Big Data Analysis, \emph{International Journal of Artificial Intelligence}, vol. 17, no. 2, pp. 44-65, 2019. 
+    
+    \bibitem[10] {Chen} M. Chen, Z. Huang, Q. Wu, W. Xu and B. Xiong, "Pre-processing and audit of power consumption data based on composite mathematical statistics model," 2018 2nd \emph{IEEE Conference on Energy Internet and Energy System Integration (EI2)}, 2018, pp. 1-4,                          DOI: 10.1109/EI2.2018.8582623. 
+    
+    \bibitem[11]{Gazi}Farid Hassanbaki Garabaghi, Semra Benzer, Recep Benzer, "Performance Evaluation of Machine Learning Models with Ensemble Learning approach in Classication of Water Quality Indices Based on Different Subset of Features", \emph{Water resources management,Springer} November 3rd, 2021 DOI : https://doi.org/10.21203/rs.3.rs-876980/v1
+    
+    \bibitem[12] {Victor} Victor Henrique Alves Ribeiro Nacre Capital, "Monitoring of drinking-water quality by means of a multi-objective ensemble learning approach", \emph{The Genetic and Evolutionary Computation Conference Companion}, July 2019, DOI:10.1145/3319619.3326745
+
+    
+    \bibitem[13] {link-2} https://medium.com/analytics-vidhya/computational-complexity-of-ml-algorithms-1bdc88af1c7a
+\end{thebibliography}
+
+
+\end{document}

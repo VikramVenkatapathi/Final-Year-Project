@@ -1,0 +1,9 @@
+
+
+IF(AD2<50, "Excellent", IF(AD2<100, "GoodWater", IF(AD2<200, "PoorWater", IF(AD2<300, "VeryPoorWater", IF(AD2>300, "NotSuitable",0)))))
+
+
+
+
+
+
